@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://unistayf.netlify.app")
 @RestController
 @RequestMapping("/api/room")
 public class RoomController {

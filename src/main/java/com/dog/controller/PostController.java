@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://unistayf.netlify.app")
 @RestController
 @RequestMapping("/api/post")
 public class PostController {
