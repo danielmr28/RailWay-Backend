@@ -18,9 +18,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import java.util.UUID;
 
+
 @RestController
 @RequestMapping("/api/user") // El path base es /api/user
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
