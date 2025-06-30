@@ -1,5 +1,5 @@
 # Use Maven image for building
-FROM maven:3.9.6-openjdk-21-slim AS build
+FROM maven:3.9.8-eclipse-temurin-21-alpine AS build
 
 # Set working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests -B
 
 # Runtime stage
-FROM openjdk:21-jre-slim
+FROM eclipse-temurin:21-jre-alpine
 
 # Set working directory
 WORKDIR /app
