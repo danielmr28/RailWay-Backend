@@ -203,14 +203,45 @@ public class InterestRequestServiceImpl implements InterestRequestService {
     }
 
     private void sendNotificationEmail(String toEmail) {
-        // ... (lógica de email)
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(senderEmail);
+        message.setTo(toEmail);
+        message.setSubject("Nueva solicitud de interés en una de tus publicaciones");
+        message.setText("¡Hola! Has recibido una nueva solicitud en una de tus habitaciones.\n\n" +
+                "Por favor inicia sesión en UniStay para ver los detalles completos.\n\n" +
+                "Este mensaje es automático. No respondas a este correo.");
+
+        mailSender.send(message);
+
     }
 
     private void sendAppointmentNotificationEmail(String toEmail) {
-        // ... (lógica de email)
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(senderEmail);
+        message.setTo(toEmail);
+        message.setSubject("Nueva propuesta de cita en UniStay");
+        message.setText("Se ha propuesto una nueva fecha para reunirse en relación a una solicitud de interés.\n\n" +
+                "Por favor, inicia sesión en UniStay para revisar la propuesta.\n\n" +
+                "Este mensaje es automático. No respondas a este correo.");
+        mailSender.send(message);
+
     }
 
     private void sendConfirmationResultEmail(String toEmail, boolean accepted) {
-        // ... (lógica de email)
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(senderEmail);
+        message.setTo(toEmail);
+        message.setSubject("Respuesta a la cita en UniStay");
+
+        if (accepted) {
+            message.setText("El estudiante ha aceptado la propuesta de cita.\n\n" +
+                    "Inicia sesión en UniStay para ver los detalles y prepararte para la reunión.");
+        } else {
+            message.setText("El estudiante ha rechazado la propuesta de cita.\n\n" +
+                    "Puedes proponer una nueva fecha si aún estás interesado.");
+        }
+
+        mailSender.send(message);
+
     }
 }
